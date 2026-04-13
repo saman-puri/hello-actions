@@ -1,11 +1,11 @@
-name: Lint Workflow
+name: Build and Test
 
 on:
   push:
   pull_request:
 
 jobs:
-  lint:
+  build_and_test:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,5 +20,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run ESLint
+      - name: Check style
         run: npm run eslint
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build project
+        run: npm run build
